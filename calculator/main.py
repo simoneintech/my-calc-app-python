@@ -1,4 +1,5 @@
 import tkinter as tk
+import ast 
 
 calculation = ""
 
@@ -13,8 +14,7 @@ def add_to_calculation(symbol):
 def evaluate_calculation():
     global calculation
     try:
-        # , {'__builtins__': None}, vars(tk))
-        calculation = str(eval(calculation))
+        calculation = str(eval(calculation)), eval({'__builtins__': {}}, {})
         text_result.delete(1.0, "end")
         text_result.insert(1.0, calculation)
     except:
